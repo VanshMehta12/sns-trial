@@ -52,7 +52,7 @@ const OfferSlider = ({ sliderData }) => {
                 <div className="row">
                     <div className="col-12">
                         {
-                            sliderData && sliderData.length > 0 && (
+                            sliderData && sliderData.filter((ele) => ele.type === "slider").length > 0 && (
                                 <div className="offer_slider_swiper">
                                     <Swiper
                                         centeredSlides={true}
@@ -71,42 +71,46 @@ const OfferSlider = ({ sliderData }) => {
                                         }}
                                         slideToClickedSlide={true}
                                     >
-                                        {sliderData.map((ele, index) => {
-                                            let href;
-                                            if (ele?.model_type === 'App\\Models\\Item') {
-                                                if (userData && userData?.id === ele?.model?.user_id) {
-                                                    href = `/my-listing/${ele?.model?.slug}`;
+                                        {sliderData
+                                            .filter((ele) => ele.type === "slider")
+                                            .map((ele, index) => {
+                                                let href;
+                                                if (ele?.model_type === 'App\\Models\\Item') {
+                                                    if (userData && userData?.id === ele?.model?.user_id) {
+                                                        href = `/my-listing/${ele?.model?.slug}`;
+                                                    } else {
+                                                        // Otherwise, link to the product details page
+                                                        href = `/product-details/${ele?.model?.slug}`;
+                                                    }
+                                                } else if (ele?.model_type === null) {
+                                                    href = ele?.third_party_link;
+                                                } else if (ele?.model_type === 'App\\Models\\Category') {
+                                                    href = `/category/${ele.model.slug}`;
                                                 } else {
-                                                    // Otherwise, link to the product details page
-                                                    href = `/product-details/${ele?.model?.slug}`;
+                                                    href = '/';
                                                 }
-                                            } else if (ele?.model_type === null) {
-                                                href = ele?.third_party_link;
-                                            } else if (ele?.model_type === 'App\\Models\\Category') {
-                                                href = `/category/${ele.model.slug}`;
-                                            } else {
-                                                href = '/';
-                                            }
-                                            return (
-                                                <SwiperSlide key={index}>
-                                                    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%" }}>
-                                                        <Link href={href} target={ele?.model_type === null ? "_blank" : ""}>
-                                                            <Image
-                                                                src={ele.image}
-                                                                width={1200}
-                                                                height={500}
-                                                                alt={ele.id}
-                                                                onError={placeholderImage}
-                                                                className="offer_slider_img"
-                                                            />
-                                                        </Link>
-                                                    </div>
-                                                </SwiperSlide>
+                                                return (
+                                                    <SwiperSlide key={index}>
+                                                        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%" }}>
+                                                            <Link href={href} target={ele?.model_type === null ? "_blank" : ""}>
+                                                                {ele.type === "slider" && (
+                                                                    <Image
+                                                                        src={ele.image}
+                                                                        width={1200}
+                                                                        height={500}
+                                                                        alt={ele.id || "offer image"}
+                                                                        onError={placeholderImage}
+                                                                        className="offer_slider_img"
+                                                                    />
+                                                                )}
+                                                            </Link>
+                                                        </div>
+                                                    </SwiperSlide>
 
-                                            )
-                                        })}
+                                                )
+                                            })}
                                     </Swiper>
-                                    {sliderData.length > 1 && (
+                                    {sliderData.filter((ele) => ele.type === "slider").length > 1 && (
                                         <>
                                             <button className="pop_cat_btns pop_cat_left_btn" onClick={swipePrev}>
                                                 <RiArrowLeftLine size={24} color="white" />
@@ -116,6 +120,7 @@ const OfferSlider = ({ sliderData }) => {
                                             </button>
                                         </>
                                     )}
+
                                 </div>
                             )
                         }

@@ -15,6 +15,7 @@ import { getKilometerRange } from '@/redux/reuducer/locationSlice'
 import Services from './Services'
 import Promotions from './Promotions'
 import EventsPage from './EventTictets'
+import HireMe from './HireMe'
 
 
 const HomePage = () => {
@@ -87,13 +88,14 @@ const HomePage = () => {
             {
                 IsLoading ? (<SliderSkeleton />) : (<OfferSlider sliderData={slider} />)
             }
+            <HireMe />
             <PopularCategories />
-            <Services />
+            <Services sliderData={slider} />
             <EventsPage />
             {
                 IsFeaturedLoading ? (<FeaturedSectionsSkeleton />) : (<FeaturedSections featuredData={featuredData} setFeaturedData={setFeaturedData} cityData={cityData} allEmpty={allEmpty} />)
             }
-            <Promotions />
+            {/* <Promotions /> */}
             <HomeAllItem cityData={cityData} allEmpty={allEmpty} />
         </>
     )
