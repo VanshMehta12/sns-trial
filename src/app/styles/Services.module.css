@@ -1,0 +1,86 @@
+/* ServicesSection.module.css */
+/* Reset and Base Styles are typically handled globally in Next.js */
+
+/* Main Container */
+
+.serviceSection {
+    background-color: #f6f5fa;
+}
+
+.servicesContainer {
+    max-width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/* Job Search Panel */
+.jobSearchPanel {
+    border-radius: 10px;
+    /* overflow: hidden; */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 2;
+    height: 300px;
+    position: relative;
+    aspect-ratio: 15 / 7;
+    /* Added globally */
+}
+
+.jobSearchImg {
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Service Cards Row */
+.serviceCards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.serviceCard {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    flex: 1;
+    height: 300px;
+    aspect-ratio: 9 / 14;
+    /* Added globally */
+}
+
+.serviceImg {
+    object-fit: cover;
+}
+
+/* Media Queries */
+@media (min-width: 500px) {
+    .servicesContainer {
+        flex-direction: row;
+    }
+
+    .serviceCards {
+        flex-direction: row;
+        flex: 3;
+    }
+}
+
+@media (max-width: 1500px) {
+    .serviceCards {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .serviceCard {
+        width: 48%;
+        height: auto;
+    }
+
+    .jobSearchPanel {
+        height: auto;
+    }
+}
