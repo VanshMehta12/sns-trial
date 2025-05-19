@@ -125,6 +125,17 @@ export default function EventsPage({ sliderData, cityData }) {
                                         clickable: true,
                                         dynamicBullets: true,
                                     }}
+                                    breakpoints={{
+                                        0: {
+                                            slidesPerView: 1,
+                                        },
+                                        768: {
+                                            slidesPerView: 2,
+                                        },
+                                        1024: {
+                                            slidesPerView: 3,
+                                        },
+                                    }}
                                 >
                                     {filteredSliderData2.map((event, index) => {
                                         const link = event.link || `/event/${event.event_id}`
