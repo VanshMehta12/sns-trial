@@ -86,12 +86,12 @@ const HomePage = () => {
     return (
         <>
             {
-                IsLoading ? (<SliderSkeleton />) : (<OfferSlider sliderData={slider} />)
+                IsLoading ? (<SliderSkeleton />) : (<OfferSlider sliderData={slider} cityData={cityData} />)
             }
             <HireMe />
             <PopularCategories />
-            <Services sliderData={slider} />
-            <EventsPage />
+            <Services sliderData={slider} cityData={cityData} />
+            <EventsPage sliderData={slider} cityData={cityData} />
             {
                 IsFeaturedLoading ? (<FeaturedSectionsSkeleton />) : (<FeaturedSections featuredData={featuredData} setFeaturedData={setFeaturedData} cityData={cityData} allEmpty={allEmpty} />)
             }
