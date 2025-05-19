@@ -150,7 +150,7 @@
     }
     
     .serviceCard {
-        grid-column: span 12;
+        grid-column: span 6;
         min-height: 200px;
     }
 }
