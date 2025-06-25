@@ -4,13 +4,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffa200;
+    background-color: #ffffff;
     padding: 20px;
 }
 
 .container {
     width: 100%;
-    max-width: 1340px;
+    max-width: 1280px;
     padding: 0px;
 }
 
