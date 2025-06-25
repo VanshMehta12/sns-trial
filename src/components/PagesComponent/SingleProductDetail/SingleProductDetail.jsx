@@ -185,7 +185,7 @@ const SingleProductDetail = ({ slug }) => {
                                             <div className="gallary_section">
                                                 <div className="display_img" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                                                     {
-                                                        images.length + (videoUrl ? 1 : 0) > 1 &&
+                                                        images.length + (videoUrl ? 1 : 0) > 1 && !viewerIsOpen &&
                                                         <>
                                                             <button className='pag2_leftarrow_cont leftarrow' onClick={swipePrev}>
                                                                 <FaArrowLeft className='arrowLeft' size={20} />
@@ -197,7 +197,7 @@ const SingleProductDetail = ({ slug }) => {
                                                         isVideClicked == false ? <Image loading="lazy" src={displayedImage} height={0} width={0} alt='display_img' onErrorCapture={placeholderImage} onClick={openLightbox} /> : <ReactPlayer url={videoUrl} controls className="react-player" width="100%" height="500px" config={{ file: { attributes: { controlsList: 'nodownload' } } }} />
                                                     }
                                                     {
-                                                        images.length + (videoUrl ? 1 : 0) > 1 &&
+                                                        images.length + (videoUrl ? 1 : 0) > 1 && !viewerIsOpen &&
                                                         <>
                                                             <button className='pag2_rightarrow_cont rightarrow' onClick={swipeNext}>
                                                                 <FaArrowRight className='arrowRight' />

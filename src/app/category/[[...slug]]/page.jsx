@@ -62,11 +62,11 @@ export const generateMetadata = async ({ params }) => {
 
 
 const getCategoryItems = async (slug) => {
-    const isDemoMode = settings?.demo_mode;
+    // const isDemoMode = settings?.demo_mode;
 
-    const location = [cityData?.city, cityData?.state, cityData?.country]
-        .filter(Boolean)
-        .join(', ');
+    // const location = [cityData?.city, cityData?.state, cityData?.country]
+    //     .filter(Boolean)
+    //     .join(', ');
 
     try {
         const params = {
@@ -76,21 +76,21 @@ const getCategoryItems = async (slug) => {
             location
         };
 
-        if (!isDemoMode) {
-            if (KmRange > 0 && cityData?.lat && cityData?.long) {
-                params.radius = KmRange;
-                params.latitude = cityData.lat;
-                params.longitude = cityData.long;
-            } else {
-                if (cityData?.city) {
-                    params.city = cityData.city;
-                } else if (cityData?.state) {
-                    params.state = cityData.state;
-                } else if (cityData?.country) {
-                    params.country = cityData.country;
-                }
-            }
-        }
+        // if (!isDemoMode) {
+        //     if (KmRange > 0 && cityData?.lat && cityData?.long) {
+        //         params.radius = KmRange;
+        //         params.latitude = cityData.lat;
+        //         params.longitude = cityData.long;
+        //     } else {
+        //         if (cityData?.city) {
+        //             params.city = cityData.city;
+        //         } else if (cityData?.state) {
+        //             params.state = cityData.state;
+        //         } else if (cityData?.country) {
+        //             params.country = cityData.country;
+        //         }
+        //     }
+        // }
 
         const response = await axios.get(
             `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_END_POINT}get-item`,
