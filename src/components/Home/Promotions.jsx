@@ -1,8 +1,7 @@
-// PromoCodesSection.jsx
-'use client'; // Add this if using in a client component
+'use client';
 
-import React from 'react';
-// import '@/app/styles/Promotions.module.css'; // Import external CSS file
+import React, { useState } from 'react';
+import AppDownloadModal from '@/components/Home/app-download-modal'; // Make sure this path is correct
 
 const PromoCard = ({
     title,
@@ -11,9 +10,10 @@ const PromoCard = ({
     backgroundColor = '#f0f5ff',
     percentIconColor = '#8a5cf6',
     validity,
+    onKnowMore, // callback prop for handling "Know more"
 }) => {
     return (
-        <div className="coupon-card">
+        <div className="coupon-card" style={{ cursor: 'pointer' }} onClick={onKnowMore}>
             <div className="coupon-content">
                 <div className="coupon" style={{ backgroundColor }}>
                     <div className="corner-top"></div>
@@ -37,13 +37,20 @@ const PromoCard = ({
 
             <div className="coupon-footer">
                 <div className="validity">{validity}</div>
-                <a href="#" className="know-more">Know more</a>
+                <a
+                    href='#'
+                    className="know-more"
+                >
+                    Know more
+                </a>
             </div>
         </div>
     );
 };
 
 export default function Promotions() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
         <section className="promo-section">
             <h4 className='pop_cat_head'>Promo Codes for More Savings</h4>
@@ -55,6 +62,7 @@ export default function Promotions() {
                     backgroundColor="#f0f5ff"
                     percentIconColor="#8a5cf6"
                     validity="Valid till 30 Jun 2025"
+                    onKnowMore={() => setIsModalOpen(true)}
                 />
 
                 <PromoCard
@@ -64,8 +72,15 @@ export default function Promotions() {
                     backgroundColor="#fff0e6"
                     percentIconColor="#f97316"
                     validity="Valid every weekend"
+                    onKnowMore={() => setIsModalOpen(true)}
                 />
             </div>
+
+            <AppDownloadModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                title={"Download app to view to get more discounts"}
+            />
         </section>
     );
 }

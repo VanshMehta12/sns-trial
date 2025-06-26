@@ -95,7 +95,7 @@ const HomePage = () => {
             {
                 IsFeaturedLoading ? (<FeaturedSectionsSkeleton />) : (<FeaturedSections featuredData={featuredData} setFeaturedData={setFeaturedData} cityData={cityData} allEmpty={allEmpty} />)
             }
-            {/* <Promotions /> */}
+            <Promotions />
             <HomeAllItem cityData={cityData} allEmpty={allEmpty} />
         </>
     )

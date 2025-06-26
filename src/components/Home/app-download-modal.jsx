@@ -45,8 +45,8 @@ export default function AppDownloadModal({ isOpen, onClose, title = "Get the ful
     },
     modalContainer: {
       position: "relative",
-      width: "100%",
-      maxWidth: "420px",
+      width: "500px",
+      maxWidth: "500px",
       background: "linear-gradient(145deg, #ffffff, #f5f7fa)",
       borderRadius: "16px",
       boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 10px 20px -5px rgba(0, 0, 0, 0.2)",

@@ -158,11 +158,22 @@ const SellerCardInProdDet = ({ productData, systemSettingsData }) => {
           {IsStartingChat ? <span>{t("startingChat")}</span> : <span>{t("startChat")}</span>}
         </button>
         {productData?.user?.show_personal_details === 1 && productData?.user?.mobile && (
-          <a href={`tel:${productData?.user?.mobile}`} className="chatBtn">
+          <button
+            className="chatBtn"
+            onClick={(e) => {
+              if (!isLogin()) {
+                e.preventDefault()
+                setIsLoginModalOpen(true)
+                return
+              }
+              window.location.href = `tel:${productData?.user?.mobile}`
+            }}
+          >
             <BiPhoneCall size={21} />
             <span>{t("call")}</span>
-          </a>
+          </button>
         )}
+
         {productData?.event_id !== null && (
           <button className="chatBtn" onClick={() => setIsModalOpen(true)}>
             <span>

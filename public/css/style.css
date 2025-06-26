@@ -1860,7 +1860,7 @@
     width: 25px;
     color: white;
     translate: -50%;
-    
+
   }
 
   .pag2_leftarrow_cont {
@@ -2715,7 +2715,7 @@
 }
 
 .offer_slider {
-  background-color: var(--primary-background);
+  background-color: var(--other-background-color);
 }
 
 .offer_slider .swiper-slide {
@@ -9990,4 +9990,13 @@ input[type=number] {
     height: 100px;
     font-size: 32px;
   }
+}
+
+
+.bg-blue {
+  background-color: var(--other-background-color);
+}
+
+.bg-white {
+  background-color: var(--primary-background);
 }

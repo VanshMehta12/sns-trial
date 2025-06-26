@@ -99,7 +99,6 @@ const page = async ({ params }) => {
                     priceCurrency: "USD",
                 },
                 countryOfOrigin: product?.country,
-                allCategory:product?.all_category
             }
         }))
     };
